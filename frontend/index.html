@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LUXE - Premium Fashion</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo" onclick="showSection('home')">LUXE</div>
+            <ul class="nav-links">
+                <li><a onclick="showSection('home')">Home</a></li>
+                <li><a onclick="showSection('men')">Men</a></li>
+                <li><a onclick="showSection('women')">Women</a></li>
+                <li><a onclick="showSection('wishlist')">Wishlist</a></li>
+            </ul>
+            <div class="nav-icons">
+                <div class="nav-icon" onclick="showSection('wishlist')">
+                    ♡
+                    <span class="badge" id="wishlist-count">0</span>
+                </div>
+                <div class="nav-icon" onclick="showSection('cart')">
+                    🛒
+                    <span class="badge" id="cart-count">0</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div id="home-section">
+        <section class="hero">
+            <div class="hero-content">
+                <h1>TIMELESS ELEGANCE</h1>
+                <p>Discover the finest collection of premium fashion</p>
+                <button class="btn-primary" onclick="showSection('men')">EXPLORE COLLECTION</button>
+            </div>
+        </section>
+        <section class="featured-categories">
+            <h2 class="section-title">Shop By Category</h2>
+            <div class="categories-grid">
+                <div class="category-card" onclick="showSection('men')">
+                    <img src="https://images.unsplash.com/photo-1621072156002-e2fccdc0b176?w=800" alt="Men's Collection">
+                    <div class="category-overlay">
+                        <h3>MEN'S COLLECTION</h3>
+                        <p>Sophisticated styles for the modern gentleman</p>
+                    </div>
+                </div>
+                <div class="category-card" onclick="showSection('women')">
+                    <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=800" alt="Women's Collection">
+                    <div class="category-overlay">
+                        <h3>WOMEN'S COLLECTION</h3>
+                        <p>Elegant designs for the contemporary woman</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <section id="men-section" class="products-section">
+        <div class="products-header">
+            <h2 class="section-title">Men's Collection</h2>
+        </div>
+        <div class="products-grid" id="men-products"></div>
+    </section>
+    <section id="women-section" class="products-section">
+        <div class="products-header">
+            <h2 class="section-title">Women's Collection</h2>
+        </div>
+        <div class="products-grid" id="women-products"></div>
+    </section>
+    <section id="product-detail" class="product-detail">
+        <div class="detail-grid" id="detail-content"></div>
+    </section>
+    <section id="cart-section" class="cart-section">
+        <h2 class="section-title">Shopping Cart</h2>
+        <div id="cart-content"></div>
+    </section>
+    <section id="wishlist-section" class="wishlist-section">
+        <h2 class="section-title">My Wishlist</h2>
+        <div id="wishlist-content"></div>
+    </section>
+    <section id="payment-section" class="payment-section">
+        <h2 class="section-title">Checkout</h2>
+        <form class="payment-form" id="payment-form" onsubmit="processPayment(event)">
+            <h3 style="margin-bottom: 2rem;">Shipping Information</h3>
+            <div class="form-group">
+                <label>Full Name *</label>
+                <input type="text" id="fullname" required>
+                <div class="error-message" id="name-error">Please enter your full name</div>
+            </div>
+            <div class="form-group">
+                <label>Email *</label>
+                <input type="email" id="email" required>
+                <div class="error-message" id="email-error">Please enter a valid email</div>
+            </div>
+            <div class="form-group">
+                <label>Address *</label>
+                <input type="text" id="address" required>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>City *</label>
+                    <input type="text" id="city" required>
+                </div>
+                <div class="form-group">
+                    <label>Postal Code *</label>
+                    <input type="text" id="postal" required>
+                </div>
+            </div>
+            
+            <h3 style="margin: 3rem 0 2rem;">Payment Information</h3>
+            <div class="form-group">
+                <label>Card Number *</label>
+                <input type="text" id="cardnumber" maxlength="19" placeholder="1234 5678 9012 3456" required>
+                <div class="error-message" id="card-error">Please enter a valid card number</div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Expiry Date *</label>
+                    <input type="text" id="expiry" placeholder="MM/YY" maxlength="5" required>
+                    <div class="error-message" id="expiry-error">Invalid expiry date</div>
+                </div>
+                <div class="form-group">
+                    <label>CVV *</label>
+                    <input type="text" id="cvv" maxlength="3" placeholder="123" required>
+                    <div class="error-message" id="cvv-error">Invalid CVV</div>
+                </div>
+            </div>
+            <button type="submit" class="payment-btn">COMPLETE PURCHASE</button>
+        </form>
+    </section>
+    <section id="confirmation-section" class="confirmation-section">
+        <div class="confirmation-icon">✓</div>
+        <h1>Order Confirmed!</h1>
+        <p style="font-size: 1.2rem; color: var(--text-light); margin-bottom: 2rem;">
+            Thank you for your purchase. Your order has been received.
+        </p>
+        <div class="order-details" id="order-details"></div>
+        <button class="btn-primary" onclick="showSection('home')">CONTINUE SHOPPING</button>
+    </section>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>ABOUT LUXE</h3>
+                <ul>
+                    <li><a href="#">Our Story</a></li>
+                    <li><a href="#">Sustainability</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Press</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>CUSTOMER SERVICE</h3>
+                <ul>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Shipping Info</a></li>
+                    <li><a href="#">Returns</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>CONNECT</h3>
+                <ul>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">Pinterest</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>NEWSLETTER</h3>
+                <p style="color: rgba(255,255,255,0.7); margin-bottom: 1rem;">
+                    Subscribe to receive updates and exclusive offers
+                </p>
+                <input type="email" placeholder="Your email" style="width: 100%; padding: 0.8rem; margin-bottom: 0.5rem;">
+                <button class="btn-primary" style="width: 100%;">SUBSCRIBE</button>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 LUXE. All rights reserved. | Privacy Policy | Terms of Service</p>
+        </div>
+    </footer>
+
+    <script src="js/products.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

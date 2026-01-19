@@ -1,0 +1,10 @@
+# OS / Editor
+.DS_Store
+.vscode/
+
+# Build folders (if any)
+dist/
+build/
+
+# Node (only if accidentally present)
+node_modules/
