@@ -23,7 +23,7 @@ ssh-keygen -t ed25519 -C "email"
 cat ~/.ssh/id_ed25519.pub
 
 git remote add origin <repo>
-git config --global push.autoSetupRemote true
+
 git push origin master
 
 http://localhost:8080
