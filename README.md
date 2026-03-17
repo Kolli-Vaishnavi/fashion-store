@@ -24,7 +24,7 @@ cat ~/.ssh/id_ed25519.pub
 
 git remote add origin <repo>
 git config --global push.autoSetupRemote true
-git push origin main
+git push origin master
 
 http://localhost:8080
 sudo cat /var/lib/jenkins/secrets/initialAdminPassword
