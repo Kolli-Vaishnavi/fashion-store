@@ -6,23 +6,23 @@ echo "deb [signed-by=/etc/apt/keyrings/jenkins-keyring.asc]" \
 sudo apt update
 sudo apt install jenkins
 
-mvn archetype:generate ...
+mvn archetype:generate -DgroupId=coll.cmrit -DartifactId=my_app -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
 cd my_app
 mvn package
 java -cp target/my_app-1.0-SNAPSHOT.jar coll.cmrit.App
 
-git config --global user.email "email"
-git config --global user.name "Student"
+git config --global user.email "kova23cs@cmrit.ac.in"
+git config --global user.name "Kolli-Vaishnavi"
 
 git init
 git add .
 git commit -m "Initial commit"
 
 ls -al ~/.ssh
-ssh-keygen -t ed25519 -C "email"
+ssh-keygen -t ed25519 -C "kova23cs@cmrit.ac.in"
 cat ~/.ssh/id_ed25519.pub
 
-git remote add origin <repo>
+git remote add origin git@github.com:Kolli-Vaishnavi/my_app.git
 
 git push origin master
 
@@ -36,7 +36,7 @@ pipeline {
   stage('Checkout') {
    steps {
     git branch: 'main',
-    url: 'https://github.com/username/repository.git'
+    url: 'https://github.com/Kolli-Vaishnavi/my_app.git'
    }
   }
 
